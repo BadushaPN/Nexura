@@ -1,30 +1,36 @@
-# Nexura - Student Gig Platform
+# Nexura
 
 ![Nexura Banner](./public/vite.svg) <!-- Replace with actual banner if available -->
 
-Nexura is a hyper-local gig economy application tailored specifically for students. It connects local customers needing help with small tasks (yard work, cleaning, tech support, etc.) directly with students in their area. 
+Nexura is a modern, hyper-local gig economy web application. Built as a proof-of-concept MVP, it demonstrates a complete end-to-end flow for connecting local individuals needing help with specific tasks (yard work, tech support, etc.) to skilled students in their area.
 
-Instead of taking a large cut or charging a subscription, Nexura operates on a **Micro-Unlock Model**: students pay a tiny $2-$3 unlock fee only *after* they are specifically selected for a job, revealing the customer's contact details.
+This project showcases the ability to rapidly prototype complex, role-based workflows and build premium user interfaces from scratch without relying on heavy frontend UI libraries like Tailwind or Material UI.
 
-## 🚀 Key Features
+## 🚀 Technical Highlights
 
-*   **Role-Based Dashboards**: Distinct experiences for `Customers` (job posters) and `Students` (gig workers).
-*   **Job Discovery & Matching**: Customers can post jobs within predefined Canadian price tiers (e.g., $15-$25, $25-$40). Students can browse local jobs and "Show Interest".
-*   **Micro-Unlock Payment Flow**: Simulated gateway where selected students pay a small mock fee to unlock the customer's direct contact information.
-*   **Public Profiles & Verification**: Detailed profiles showing location, college/university details, skills, and simulated ID-verified badges.
-*   **Premium Glassmorphism UI**: Built with a custom Vanilla CSS design system featuring mesh gradients, glass cards, and smooth micro-animations.
+*   **Custom Design System**: Built entirely with Vanilla CSS, featuring a deeply integrated glassmorphism aesthetic, mesh gradients, and smooth micro-animations.
+*   **Role-Based Architecture**: Implements distinct, protected routing and dashboard experiences for two distinct user types (`Customer` and `Student`) using a centralized Context API.
+*   **State Management & Persistence**: Utilizes a custom storage service wrapper around `LocalStorage` to simulate a fully functional backend database, handling complex relationships between Users, Jobs, and Applications.
+*   **Dynamic Data Relationships**: Successfully mocks relational data handling on the client-side, allowing customers to view interested students, and students to view detailed customer profiles before engaging.
 
 ## 🛠️ Technology Stack
 
-*   **Frontend**: React.js (via Vite)
-*   **Styling**: Vanilla CSS (Custom Glassmorphism Design System)
-*   **Routing**: React Router DOM
+*   **Frontend Framework**: React.js 18 (Bootstrapped with Vite)
+*   **Routing**: React Router DOM v6
+*   **Styling**: Pure CSS3 (CSS Variables, Flexbox/Grid, Backdrop Filters)
 *   **Icons**: Lucide React
-*   **Database**: Simulated backend using `LocalStorage` (for MVP phase)
+*   **Data Layer**: Simulated REST-like service via LocalStorage API
+
+## 📁 System Architecture
+
+*   `src/context/AuthContext.jsx`: Global state container managing the simulated session tokens and user identity.
+*   `src/services/storage.js`: The mock data layer. Abstracts all `localStorage` interactions into clean, reusable CRUD functions.
+*   `src/pages/`: Contains the isolated view components (Dashboards, Auth Flow, Profile Viewer).
+*   `src/index.css`: The foundational design token file driving the application's unique visual identity.
 
 ## 📦 Local Setup & Installation
 
-To run this project locally on your machine:
+To run this project locally on your machine and explore the code:
 
 1. **Clone the repository:**
    ```bash
@@ -42,18 +48,10 @@ To run this project locally on your machine:
    npm run dev
    ```
 
-4. **Open in browser:**
-   Navigate to `http://localhost:5173` in your web browser.
+4. **Explore the App:**
+   Navigate to `http://localhost:5173` in your web browser. 
 
-## 💡 MVP Usage Guide
-
-Since this MVP uses `LocalStorage` to mock a database, all data remains in your browser. Here is how to test the flow:
-
-1. **Create a Customer Account**: Sign up as a Customer, fill in your details, and post a new job.
-2. **Create a Student Account**: Log out, then sign up as a Student. Make sure to specify your College and Skills.
-3. **Show Interest**: As the Student, browse the job feed and click "Show Interest" on the job you created in Step 1.
-4. **Select Student**: Log back in as the Customer. View your posted job, review the student's profile, and click "Select & Hire".
-5. **Unlock Details**: Log back in as the Student. Go to "My Applications" and click the prompt to pay the $2.99 fee. This will simulate a payment and reveal the Customer's contact info.
+*Note: Since the backend is simulated via the browser's LocalStorage, you can test the entire platform flow—from creating an account to matching a gig worker with a job poster—entirely on your local machine with zero external dependencies.*
 
 ## 👨‍💻 Developed By
 
