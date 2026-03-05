@@ -25,39 +25,43 @@ const DashboardRedirect = () => {
   return <Landing />;
 }
 
+import { ToastProvider } from './context/ToastContext';
+
 function App() {
   return (
     <AuthProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<DashboardRedirect />} />
-          <Route path="/auth" element={<Auth />} />
-          <Route
-            path="/student-dashboard"
-            element={
-              <ProtectedRoute roleRequired="student">
-                <StudentDashboard />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/customer-dashboard"
-            element={
-              <ProtectedRoute roleRequired="customer">
-                <CustomerDashboard />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/profile/:id"
-            element={
-              <ProtectedRoute>
-                <Profile />
-              </ProtectedRoute>
-            }
-          />
-        </Routes>
-      </Router>
+      <ToastProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<DashboardRedirect />} />
+            <Route path="/auth" element={<Auth />} />
+            <Route
+              path="/student-dashboard"
+              element={
+                <ProtectedRoute roleRequired="student">
+                  <StudentDashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/customer-dashboard"
+              element={
+                <ProtectedRoute roleRequired="customer">
+                  <CustomerDashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/profile/:id"
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
+        </Router>
+      </ToastProvider>
     </AuthProvider>
   );
 }
